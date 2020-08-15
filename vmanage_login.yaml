@@ -1,0 +1,7 @@
+# vManage Connectivity Info
+vmanage_host: 
+vmanage_port: 8443
+vmanage_username: admin
+vmanage_password: admin
+hub_routers: 
+  - system_ip: 
