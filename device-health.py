@@ -49,7 +49,8 @@ if __name__ == '__main__':
         vmanage_host = config["vmanage_host"]
         vmanage_port = config["vmanage_port"]
         username = config["vmanage_username"]
-        password = config["vmanage_password"]  
+        password = config["vmanage_password"]
+        routerId = config["hub_routers"]  
 
         Auth = Authentication()
         jsessionid = Auth.get_jsessionid(vmanage_host,vmanage_port,username,password)
@@ -67,21 +68,21 @@ if __name__ == '__main__':
         total_records = 0
         payload = {}
 
-        api_url = "/device/system/status?deviceId=1.1.1.11"
+        api_url = "/device/system/status?deviceId=%s"%(routerId[0]['system_ip'])
 
         url = base_url + api_url
 
         response = requests.request("GET", url=url, headers=headers, data = payload, verify=False)
-        cpu_stats = response.json()["data"]
+        device_stats = response.json()["data"]
 
         # loop over the API response variable items and create records to be stored in InfluxDB
 
         if response.status_code == 200:
-            cpu_stats = response.json()["data"]
+            device_stats = response.json()["data"]
 
-            for item in cpu_stats:
+            for item in device_stats:
                 temp = {
-                        "measurement": "CPU_stats",
+                        "measurement": "device_stats",
                         "tags": {
                                     "Device": item['vdevice-name']
                                 },
