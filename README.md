@@ -3,8 +3,7 @@ TIG stack on Docker for network monitoring of Cisco SDWAN controller
 
 ## Getting Started
 
-I ran this code using a Mac-OS. with docker already installed. the main goal of this is running a monitoring completed system to collect information from the vManager using 
-RESTAPIService and save those values into a InfluxDB database then you can use Grafana dashboard to monitoring.
+I ran this code using a Mac-OS. with Docker already installed. the main goal of this is running monitoring complete system to collect information from the Cisco vManager using RESTAPIService and save those values into an InfluxDB database then you can use the Grafana dashboard to monitoring.
 
 ### Prerequisites
 
